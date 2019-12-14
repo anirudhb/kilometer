@@ -6,7 +6,14 @@
  * kilo, but more extensible and makes a few different design decisions so that
  * it's easy to use and extend.
  */
+#include <termios.h>
 #include <unistd.h>
+
+void enableRawMode() {
+	struct termios raw;
+
+	tcgetattr(STDIN_FILENO, &raw);
+}
 
 int main() {
   char c;
